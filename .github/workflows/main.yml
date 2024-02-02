@@ -1,19 +1,20 @@
 name: Checkout
 
-on: 
-  [push, workflow_dispatch]
+on:
+  [push]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: build_oure_jest_test
-      run: |
-        npm install
-        npm run test 
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          npm install
+          npm test
   
   publish:
     runs-on: ubuntu-latest
@@ -28,9 +29,9 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build image
-        run: docker image build -t muaz-ar/cicd-demo .
+        run: docker image build -t muazar/cicd-demo .
 
       - name: Push image
-        run: docker push muaz-ar/cicd-demo:latest
-  
+        run: docker push muazar/cicd-demo:latest
+        
  
