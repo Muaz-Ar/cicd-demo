@@ -10,4 +10,8 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
+    - name: build_oure_jest_test
+      run: |
+        npm install
+        npm run test 
 
