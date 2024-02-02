@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build image
-        run: docker image build -t muaz-ar/greetingApp .
+        run: docker image build -t muaz-ar/greetingapp .
 
       - name: Push image
         run: docker push muaz-ar/greet:latest
