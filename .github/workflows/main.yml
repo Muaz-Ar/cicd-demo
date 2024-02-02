@@ -31,4 +31,5 @@ jobs:
         run: docker image build -t muaz-ar/greetingapp .
 
       - name: Push image
-        run: docker push muaz-ar/greet:latest
+        run: docker push muaz-ar/greetingapp:latest
+        
