@@ -30,7 +30,6 @@ jobs:
 
       - name: Build image
         run: docker image build -t muazar/cicd-demo .
-        run: docker image build -t muazar/cicd-demo .
 
       - name: Push image
         run: docker push muazar/cicd-demo:latest
