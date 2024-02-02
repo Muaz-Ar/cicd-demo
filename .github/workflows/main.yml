@@ -1,7 +1,7 @@
 name: Checkout
 
 on:
-  [push]
+  [workflow_dispatch, push]
 
 jobs:
 
@@ -33,16 +33,17 @@ jobs:
 
       - name: Push image
         run: docker push muazar/cicd-demo:latest
-  
+
+
   bring_live:
     runs-on: self-hosted
-
+    needs: publish
     steps:
-      - name: fetchb image
+      - name: fetch image
         run: docker pull muazar/cicd-demo:latest
 
-      - name: run image
+      - name: remove old container
         run: docker container rm -f server
 
-      - name: run new container 
-        run: docker container run -d -p 3000:3000 --name server muaz-ar/greetingapp:latest 
+      - name: run new container
+        run: docker container run -p 3000:3000 -d --name server muazar/cicd-demo:latest
