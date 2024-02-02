@@ -35,7 +35,7 @@ jobs:
         run: docker push muazar/cicd-demo:latest
   
   bring_live:
-    runs-on: aws_ec2
+    runs-on: self-hosted
 
     steps:
       - name: fetchb image
